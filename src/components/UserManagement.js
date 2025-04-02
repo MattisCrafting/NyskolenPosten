@@ -119,95 +119,145 @@ function UserManagement() {
 
       <style jsx>{`
         .user-management {
-          padding: 20px;
+          padding: 40px;
           max-width: 1200px;
           margin: 0 auto;
+          background: #f5f7f9;
+          min-height: 100vh;
+        }
+
+        h2 {
+          color: #2c3e50;
+          margin-bottom: 30px;
+          font-size: 2rem;
+          text-align: center;
         }
 
         .user-list {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 20px;
-          margin-top: 20px;
+          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+          gap: 30px;
+          margin-top: 30px;
+          padding: 20px;
         }
 
         .user-card {
           background: white;
-          border-radius: 8px;
-          padding: 20px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          border-radius: 12px;
+          padding: 25px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.05);
           display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
+          flex-direction: column;
+          gap: 15px;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .user-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
 
         .user-info {
           flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
         }
 
         .user-info h3 {
-          margin: 0 0 10px 0;
-          color: #333;
+          margin: 0;
+          color: #2c3e50;
+          font-size: 1.4rem;
+          font-weight: 600;
         }
 
         .email {
-          color: #666;
-          margin: 5px 0;
+          color: #34495e;
+          margin: 0;
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 8px;
         }
 
         .role {
-          color: #888;
-          font-size: 0.9em;
-          margin: 5px 0;
+          color: #7f8c8d;
+          font-size: 0.95rem;
+          margin: 0;
+          padding: 4px 8px;
+          background: #f8f9fa;
+          border-radius: 6px;
+          display: inline-block;
         }
 
         .user-details {
           display: flex;
-          gap: 10px;
-          margin: 10px 0;
+          gap: 15px;
+          margin: 15px 0;
         }
 
         .user-details input {
-          padding: 5px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          font-size: 0.9em;
+          padding: 8px 12px;
+          border: 2px solid #e0e0e0;
+          border-radius: 8px;
+          font-size: 0.95rem;
+          transition: border-color 0.2s;
+          width: 100%;
+        }
+
+        .user-details input:focus {
+          border-color: #3498db;
+          outline: none;
         }
 
         .user-details input[type="number"] {
-          width: 80px;
+          width: 100px;
         }
 
         .created {
-          color: #999;
-          font-size: 0.8em;
-          margin: 5px 0;
+          color: #95a5a6;
+          font-size: 0.85rem;
+          margin: 0;
         }
 
         .role-controls {
-          margin-left: 20px;
+          margin-top: 15px;
+          padding-top: 15px;
+          border-top: 1px solid #ecf0f1;
+          width: 100%;
         }
 
         .role-controls select {
-          padding: 5px;
-          border-radius: 4px;
-          border: 1px solid #ddd;
+          width: 100%;
+          padding: 8px 12px;
+          border: 2px solid #e0e0e0;
+          border-radius: 8px;
+          font-size: 0.95rem;
+          background-color: white;
+          cursor: pointer;
+          transition: border-color 0.2s;
+        }
+
+        .role-controls select:focus {
+          border-color: #3498db;
+          outline: none;
         }
 
         .loading {
           text-align: center;
-          padding: 20px;
-          font-size: 1.2em;
-          color: #666;
+          padding: 40px;
+          font-size: 1.2rem;
+          color: #7f8c8d;
         }
 
         .error {
-          color: #d32f2f;
+          color: #e74c3c;
           padding: 20px;
           text-align: center;
-          background: #ffebee;
-          border-radius: 4px;
+          background: #fdf0ed;
+          border-radius: 8px;
           margin: 20px 0;
+          font-size: 1rem;
         }
       `}</style>
     </div>
