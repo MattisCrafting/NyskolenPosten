@@ -1,0 +1,204 @@
+:root {
+  /* Farger */
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --warning-color: #f1c40f;
+  --success-color: #27ae60;
+  --text-primary: #2c3e50;
+  --text-secondary: #34495e;
+  --text-light: #ffffff;
+  --background-light: #f5f7f9;
+  --card-bg: #ffffff;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.5rem;
+  --spacing-xxl: 3rem;
+
+  /* Border */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 6px 12px rgba(0,0,0,0.1);
+
+  /* Transitions */
+  --transition-speed: 0.2s;
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Container */
+  --container-width: 1200px;
+  --container-padding: 40px;
+}
+
+/* Felles container-stil */
+.page-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--container-padding);
+  background: var(--background-light);
+  min-height: 100vh;
+}
+
+/* Kort-stil */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-speed) var(--transition-ease),
+              box-shadow var(--transition-speed) var(--transition-ease);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Knapp-stiler */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed) var(--transition-ease);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: var(--text-light);
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+  color: var(--text-light);
+}
+
+.btn-danger {
+  background: var(--danger-color);
+  color: var(--text-light);
+}
+
+.btn-warning {
+  background: var(--warning-color);
+  color: var(--text-primary);
+}
+
+/* Form-stiler */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid #e0e0e0;
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) var(--transition-ease);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Status-merker */
+.status-badge {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status-success {
+  background: #e8f5e9;
+  color: var(--success-color);
+}
+
+.status-warning {
+  background: #fff8e1;
+  color: #ff8f00;
+}
+
+.status-danger {
+  background: #ffebee;
+  color: var(--danger-color);
+}
+
+/* Meldingsbokser */
+.message-box {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.message-success {
+  background: #e8f5e9;
+  color: var(--success-color);
+}
+
+.message-error {
+  background: #ffebee;
+  color: var(--danger-color);
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 20px;
+  }
+
+  .card {
+    padding: var(--spacing-lg);
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Animasjoner */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s var(--transition-ease);
+} 

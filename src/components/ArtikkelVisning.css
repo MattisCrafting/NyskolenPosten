@@ -1,49 +1,27 @@
+@import '../styles/shared.css';
+
 /* Moderne design for artikkelvisning med glassmorfisme */
 .artikkel-visning {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2.5rem;
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-  box-shadow: var(--container-shadow);
-  backdrop-filter: blur(10px);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-.ikke-godkjent-advarsel {
-  background-color: rgba(255, 152, 0, 0.1);
-  color: #ff6d00;
-  padding: 1rem 1.25rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  border-left: 4px solid #ff6d00;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-}
-
-.ikke-godkjent-advarsel::before {
-  content: "⚠️";
-  margin-right: 10px;
-  font-size: 1.2rem;
+  composes: page-container;
+  animation: fadeIn 0.5s var(--transition-ease);
 }
 
 .artikkel {
-  margin-bottom: 2rem;
+  composes: card;
+  margin-bottom: var(--spacing-xl);
 }
 
 .artikkel-header {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-xl);
 }
 
 .artikkel-tittel {
   font-family: 'Playfair Display', serif;
   font-size: 2.8rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: var(--spacing-md);
   line-height: 1.2;
   color: var(--text-primary);
   position: relative;
-  display: inline-block;
 }
 
 .artikkel-tittel::after {
@@ -52,26 +30,25 @@
   left: 0;
   bottom: -5px;
   height: 3px;
-  width: 100%;
+  width: 100px;
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   border-radius: 3px;
-  opacity: 0.8;
 }
 
 .artikkel-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  gap: var(--spacing-md);
   align-items: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-secondary);
 }
 
 .artikkel-forfatter {
   font-weight: 600;
-  padding-right: 1rem;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
 }
 
 .artikkel-dato {
@@ -79,26 +56,24 @@
 }
 
 .artikkel-kategori {
-  background-color: var(--secondary-color);
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  composes: status-badge;
+  background: var(--primary-color);
+  color: var(--text-light);
 }
 
 .artikkel-bilde {
-  margin-bottom: 2rem;
-  border-radius: var(--border-radius);
+  margin: var(--spacing-xl) 0;
+  border-radius: var(--border-radius-md);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .artikkel-bilde img {
   width: 100%;
-  max-height: 550px;
+  height: auto;
+  max-height: 600px;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform var(--transition-speed) var(--transition-ease);
 }
 
 .artikkel-bilde:hover img {
@@ -107,30 +82,28 @@
 
 .artikkel-ingress {
   font-size: 1.3rem;
-  font-weight: 500;
   line-height: 1.6;
-  margin-bottom: 2rem;
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  margin: var(--spacing-xl) 0;
+  padding-left: var(--spacing-md);
   border-left: 3px solid var(--primary-color);
-  padding-left: 1.25rem;
   font-family: 'Playfair Display', serif;
 }
 
 .artikkel-innhold {
+  font-size: 1.1rem;
   line-height: 1.8;
   color: var(--text-primary);
-  font-size: 1.1rem;
 }
 
 .artikkel-innhold h3 {
   font-size: 1.7rem;
-  margin: 2rem 0 1rem;
+  margin: var(--spacing-xl) 0 var(--spacing-md);
   color: var(--text-primary);
-  font-weight: 600;
 }
 
 .artikkel-innhold p {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-md);
 }
 
 .artikkel-innhold strong {
@@ -144,103 +117,83 @@
 }
 
 .artikkel-navigasjon {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: var(--spacing-xxl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .tilbake-lenke {
-  display: inline-flex;
-  align-items: center;
+  composes: btn;
+  background-color: transparent;
   color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all var(--transition-speed) ease;
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
-  background-color: rgba(30, 136, 229, 0.1);
+  border: 2px solid var(--primary-color);
 }
 
 .tilbake-lenke:hover {
-  background-color: rgba(30, 136, 229, 0.2);
-  transform: translateX(-5px);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.administrer-knapper {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.rediger-knapp {
+  composes: btn btn-primary;
+}
+
+.slett-knapp {
+  composes: btn btn-danger;
+}
+
+.avbryt-knapp {
+  composes: btn btn-secondary;
 }
 
 .deling-knapper {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-sm);
 }
 
 .del-knapp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-light);
-  font-weight: 500;
-  padding: 0.5rem 1.25rem;
-  border-radius: 30px;
-  background: linear-gradient(to right, var(--secondary-color), #ff9e80);
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-speed) ease;
-  box-shadow: 0 4px 15px rgba(255, 110, 64, 0.3);
+  composes: btn btn-secondary;
 }
 
-.del-knapp:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 110, 64, 0.4);
-}
-
-.del-knapp:active {
-  transform: translateY(-1px);
+.ikke-godkjent-advarsel {
+  composes: message-box;
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 4px solid #ffc107;
+  margin-bottom: var(--spacing-xl);
 }
 
 @media (max-width: 768px) {
-  .artikkel-visning {
-    padding: 1.75rem;
-    margin: 1.5rem 1rem;
-  }
-  
   .artikkel-tittel {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
-  
+
   .artikkel-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--spacing-sm);
   }
-  
-  .artikkel-forfatter {
-    border-right: none;
-    padding-right: 0;
-  }
-  
+
   .artikkel-ingress {
     font-size: 1.2rem;
-    padding-left: 1rem;
   }
-}
 
-@media (max-width: 576px) {
-  .artikkel-visning {
-    padding: 1.25rem;
-    margin: 1rem 0.5rem;
+  .artikkel-navigasjon {
+    flex-direction: column;
+    gap: var(--spacing-md);
   }
-  
-  .artikkel-tittel {
-    font-size: 1.8rem;
-  }
-  
-  .artikkel-ingress {
-    font-size: 1.1rem;
-  }
-  
-  .artikkel-innhold {
-    font-size: 1rem;
+
+  .administrer-knapper {
+    width: 100%;
+    flex-direction: column;
   }
 }
 
@@ -285,67 +238,21 @@
   margin-top: 0;
 }
 
-/* Admin-knapper */
-.administrer-knapper {
-  display: flex;
-  gap: 10px;
-  margin: 1rem 0;
-}
-
-.rediger-knapp, .slett-knapp, .avbryt-knapp {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s;
-}
-
-.rediger-knapp {
-  background-color: #3498db;
-  color: white;
-}
-
-.rediger-knapp:hover {
-  background-color: #2980b9;
-}
-
-.slett-knapp {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.slett-knapp:hover {
-  background-color: #c0392b;
-}
-
-.bekreft-slett {
-  background-color: #c0392b;
-  animation: pulse 1s infinite;
-}
-
-.avbryt-knapp {
-  background-color: #7f8c8d;
-  color: white;
-}
-
-.avbryt-knapp:hover {
-  background-color: #95a5a6;
-}
-
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
-}
-
-/* Ikke-godkjent advarsel */
-.ikke-godkjent-advarsel {
-  background-color: #fff3cd;
-  color: #856404;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border-radius: 4px;
-  text-align: center;
-  border-left: 5px solid #ffeeba;
+@media (max-width: 576px) {
+  .artikkel-visning {
+    padding: 1.25rem;
+    margin: 1rem 0.5rem;
+  }
+  
+  .artikkel-tittel {
+    font-size: 1.8rem;
+  }
+  
+  .artikkel-ingress {
+    font-size: 1.1rem;
+  }
+  
+  .artikkel-innhold {
+    font-size: 1rem;
+  }
 } 
