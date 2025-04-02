@@ -4,15 +4,17 @@
   "private": true,
   "homepage": "https://NyskolenPosten.github.io/NyskolenPosten",
   "dependencies": {
+    "@prisma/client": "^5.10.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.5",
     "react-router-dom": "^6.8.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -43,6 +45,7 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
+    "prisma": "^5.10.2",
     "sharp": "^0.33.5"
   },
   "description": "Nyskolen Posten er en nettbasert skoleavis for elever på Nyskolen i Oslo. Applikasjonen er bygget med React og bruker lokal lagring (localStorage) for å lagre artikler og brukerinformasjon.",
